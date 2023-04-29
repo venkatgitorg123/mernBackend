@@ -1,5 +1,5 @@
 const express = require('express')
-const serverless = require('serverless-http')
+
 
 const cors = require('cors')
 const mongoose = require('mongoose')
@@ -30,5 +30,3 @@ mongoose.connect(uri)
 app.listen(port,()=>{
     console.log(`server is running port: ${port}`)
 })
-
-module.exports.handler = serverless(app)
