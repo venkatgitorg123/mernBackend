@@ -1,4 +1,6 @@
 const express = require('express')
+const serverless = require('serverless-http')
+
 const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config();
@@ -22,9 +24,11 @@ mongoose.connect(uri)
   const exerciseroutes = require('./routes/exercise')
   const userroutes = require('./routes/user')
 
-  app.use('/exercises',exerciseroutes)
-  app.use('/users', userroutes)
+  app.use('/functions/exercises',exerciseroutes)
+  app.use('/functions/users', userroutes)
 
 app.listen(port,()=>{
     console.log(`server is running port: ${port}`)
 })
+
+module.exports.handler = serverless(app)
