@@ -1,20 +1,15 @@
 const express = require('express')
-
-
 const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config();
 
+
 const uri = process.env.ATLAS_URI;
-
 const app = express()
-
 const port = process.env.PORT || 5000;
-
 app.use(cors())
 
 app.use(express.json());
-
 
 mongoose.connect(uri)
         .then(() => {
@@ -23,9 +18,11 @@ mongoose.connect(uri)
 
   const exerciseroutes = require('./routes/exercise')
   const userroutes = require('./routes/user')
+  const teamroutes = require('./routes/teamroutes')
 
-  app.use('/functions/exercises',exerciseroutes)
-  app.use('/functions/users', userroutes)
+  app.use('/exercises',exerciseroutes)
+  app.use('/users', userroutes)
+  app.use('/teamplayers', teamroutes)
 
 app.listen(port,()=>{
     console.log(`server is running port: ${port}`)
