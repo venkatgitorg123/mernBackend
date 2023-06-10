@@ -69,6 +69,13 @@ const teamSchema = new Schema(
             trim:true,
             minlength:1,
         },
+        pid:
+        {
+            type:Number,
+            require:true,
+            trim:true,
+            minlength:1,
+        },
         description:{type:String, require: true},
         duration: {type:Number, require: true},
        date:{type:Date, require: true}

@@ -2,6 +2,9 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config();
+const exerciseroutes = require('./routes/exercise')
+const userroutes = require('./routes/user')
+const teamroutes = require('./routes/teamroutes')
 
 
 const uri = process.env.ATLAS_URI;
@@ -16,9 +19,6 @@ mongoose.connect(uri)
           console.log("hi mongo");
         })
 
-  const exerciseroutes = require('./routes/exercise')
-  const userroutes = require('./routes/user')
-  const teamroutes = require('./routes/teamroutes')
 
   app.use('/exercises',exerciseroutes)
   app.use('/users', userroutes)
